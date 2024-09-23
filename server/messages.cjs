@@ -1,12 +1,10 @@
-const { generateRandomId } = require('./utils.cjs')
+import { generateRandomId } from './utils.cjs'
 
-module.exports = {
-  buildMessage: (session, message) => {
-    return {
-      id: generateRandomId(),
-      userId: session.userId,
-      username: session.username,
-      message,
-    }
-  },
+export const buildMessage = (session, message) => {
+  return {
+    id: generateRandomId(),
+    userId: session.userId,
+    username: session.username,
+    message,
+  }
 }
