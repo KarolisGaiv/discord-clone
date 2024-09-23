@@ -1,8 +1,10 @@
-export const initializeChannel = name => {
-  const channel = {
-    name,
-    messages: [],
-  }
+module.exports = {
+  initializeChannel: name => {
+    const channel = {
+      name,
+      messages: [],
+    }
 
-  return channel
+    return channel
+  },
 }
