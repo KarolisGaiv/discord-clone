@@ -5,7 +5,8 @@ import Avatar from 'boring-avatars'
 export default function ChatWindow({ channel, messages }) {
   const [newMessage, setNewMessage] = useState('')
 
-  function handleSendMessage() {
+  function handleSendMessage(e) {
+    e.preventDefault()
     socket.emit('message:channel:send', channel.name, newMessage)
     setNewMessage('')
   }
@@ -23,15 +24,15 @@ export default function ChatWindow({ channel, messages }) {
         ))}
       </div>
 
-      <div>
+      <form onSubmit={handleSendMessage}>
         <input
           type="text"
           value={newMessage}
           onChange={e => setNewMessage(e.target.value)}
           placeholder={`Message #${channel.name}`}
         />
-        <button onClick={handleSendMessage}>Send</button>
-      </div>
+        <button type="submit">Send</button>
+      </form>
     </div>
   )
 }
