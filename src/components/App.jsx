@@ -48,9 +48,6 @@ function App() {
       ) : (
         <div>
           <Channels channels={channels} />
-          {/* <p>Connected: {isConnected ? 'Yes' : 'No'}</p>
-          <p>User: {nickName}</p>
-          {console.log(channels)} */}
         </div>
       )}
     </div>
