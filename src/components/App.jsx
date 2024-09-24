@@ -11,6 +11,7 @@ function App() {
   const [channels, setChannels] = useState([])
   const [users, setUsers] = useState([])
   const [selectedChannel, setSelectedChannel] = useState(null)
+  const [channelMessages, setChannelMessages] = useState({})
 
   useEffect(() => {
     if (hasNickname) {
@@ -29,11 +30,20 @@ function App() {
       setUsers(listOfUsers)
     })
 
+    // listen for incoming messages and store them in channelMessages state
+    socket.on('message:channel', (channelName, message) => {
+      setChannelMessages(prevState => ({
+        ...prevState,
+        [channelName]: [...(prevState[channelName] || []), message],
+      }))
+    })
+
     return () => {
       socket.off('connect')
       socket.off('disconnect')
       socket.off('channels')
       socket.off('users')
+      socket.off('message:channel')
     }
   }, [hasNickname, nickName])
 
@@ -65,7 +75,14 @@ function App() {
         <div>
           <ChannelsList channels={channels} onChannelSelect={handleChannelSelect} />
           <UsersList listOfUsers={users} />
-          {selectedChannel ? <ChatWindow channel={selectedChannel} /> : <p>No channel selected</p>}
+          {selectedChannel ? (
+            <ChatWindow
+              channel={selectedChannel}
+              messages={channelMessages[selectedChannel.name] || []}
+            />
+          ) : (
+            <p>No channel selected</p>
+          )}
         </div>
       )}
     </div>
