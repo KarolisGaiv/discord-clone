@@ -1,6 +1,7 @@
 import { socket } from '@/libs/socket'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Avatar from 'boring-avatars'
+import moment from 'moment'
 
 export default function ChatWindow({ channel, messages }) {
   const [newMessage, setNewMessage] = useState('')
@@ -19,7 +20,13 @@ export default function ChatWindow({ channel, messages }) {
         {messages.map(message => (
           <div key={message.id}>
             <Avatar name={message.username} size={20} variant="beam" />
-            <strong>{message.username}</strong>: {message.message}
+            <div>
+              <p>
+                <strong>{message.username}</strong>
+              </p>
+              <span>{moment(message.timestamp).format('L, LT')}</span>
+            </div>
+            {message.message}
           </div>
         ))}
       </div>
