@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import { socket } from '@/libs/socket'
 import Channels from './Channels'
+import Users from './Users'
 
 function App() {
   const [isConnected, setIsConnected] = useState(socket.connected)
   const [nickName, setNickName] = useState('')
   const [hasNickname, setHasNickname] = useState(false)
   const [channels, setChannels] = useState([])
+  const [users, setUsers] = useState([])
 
   useEffect(() => {
     socket.connect()
@@ -18,10 +20,15 @@ function App() {
       setChannels(receivedChannels)
     })
 
+    socket.on('users', listOfUsers => {
+      setUsers(listOfUsers)
+    })
+
     return () => {
       socket.off('connect')
       socket.off('disconnect')
       socket.off('channels')
+      socket.off('users')
     }
   }, [])
 
@@ -48,6 +55,7 @@ function App() {
       ) : (
         <div>
           <Channels channels={channels} />
+          <Users listOfUsers={users} />
         </div>
       )}
     </div>
