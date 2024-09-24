@@ -11,7 +11,10 @@ function App() {
   const [users, setUsers] = useState([])
 
   useEffect(() => {
-    socket.connect()
+    if (hasNickname) {
+      socket.auth = { username: nickName }
+      socket.connect()
+    }
 
     socket.on('connect', () => setIsConnected(true))
     socket.on('disconnect', () => setIsConnected(false))
@@ -30,7 +33,7 @@ function App() {
       socket.off('channels')
       socket.off('users')
     }
-  }, [])
+  }, [hasNickname, nickName])
 
   function handleNicknameSubmit(event) {
     event.preventDefault()
