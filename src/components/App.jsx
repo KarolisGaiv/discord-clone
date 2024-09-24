@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { socket } from '@/libs/socket'
-import Channels from './Channels'
-import Users from './Users'
+import ChannelsList from './ChannelsList'
+import UsersList from './UsersList'
 
 function App() {
   const [isConnected, setIsConnected] = useState(socket.connected)
@@ -57,8 +57,8 @@ function App() {
         </form>
       ) : (
         <div>
-          <Channels channels={channels} />
-          <Users listOfUsers={users} />
+          <ChannelsList channels={channels} />
+          <UsersList listOfUsers={users} />
         </div>
       )}
     </div>

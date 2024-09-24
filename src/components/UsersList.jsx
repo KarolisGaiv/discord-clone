@@ -1,6 +1,4 @@
-function Users({ listOfUsers }) {
-  console.log(listOfUsers)
-
+function UsersList({ listOfUsers }) {
   return (
     <div>
       <h1>Available Users:</h1>
@@ -16,4 +14,4 @@ function Users({ listOfUsers }) {
   )
 }
 
-export default Users
+export default UsersList

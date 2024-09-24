@@ -1,6 +1,4 @@
-function Channels({ channels }) {
-  console.log(channels)
-
+function ChannelsList({ channels }) {
   return (
     <div>
       <h1>Available Channels:</h1>
@@ -13,4 +11,4 @@ function Channels({ channels }) {
   )
 }
 
-export default Channels
+export default ChannelsList
