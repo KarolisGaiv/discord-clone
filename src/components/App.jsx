@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { socket } from '@/libs/socket'
+import Channels from './Channels'
 
 function App() {
   const [isConnected, setIsConnected] = useState(socket.connected)
@@ -46,9 +47,10 @@ function App() {
         </form>
       ) : (
         <div>
-          <p>Connected: {isConnected ? 'Yes' : 'No'}</p>
+          <Channels channels={channels} />
+          {/* <p>Connected: {isConnected ? 'Yes' : 'No'}</p>
           <p>User: {nickName}</p>
-          {console.log(channels)}
+          {console.log(channels)} */}
         </div>
       )}
     </div>
