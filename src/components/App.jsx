@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { socket } from '@/libs/socket'
 import ChannelsList from './ChannelsList'
 import UsersList from './UsersList'
+import ChatWindow from './ChatWindow'
 
 function App() {
   const [isConnected, setIsConnected] = useState(socket.connected)
@@ -9,6 +10,7 @@ function App() {
   const [hasNickname, setHasNickname] = useState(false)
   const [channels, setChannels] = useState([])
   const [users, setUsers] = useState([])
+  const [selectedChannel, setSelectedChannel] = useState(null)
 
   useEffect(() => {
     if (hasNickname) {
@@ -41,6 +43,10 @@ function App() {
     setHasNickname(true)
   }
 
+  function handleChannelSelect(channel) {
+    setSelectedChannel(channel)
+  }
+
   return (
     <div>
       {!hasNickname ? (
@@ -57,8 +63,9 @@ function App() {
         </form>
       ) : (
         <div>
-          <ChannelsList channels={channels} />
+          <ChannelsList channels={channels} onChannelSelect={handleChannelSelect} />
           <UsersList listOfUsers={users} />
+          {selectedChannel ? <ChatWindow channel={selectedChannel} /> : <p>No channel selected</p>}
         </div>
       )}
     </div>

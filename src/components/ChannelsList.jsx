@@ -1,10 +1,12 @@
-function ChannelsList({ channels }) {
+function ChannelsList({ channels, onChannelSelect }) {
   return (
     <div>
       <h1>Available Channels:</h1>
       <ul>
         {channels.map((channel, index) => (
-          <button key={index}>{channel.name}</button>
+          <li key={index}>
+            <button onClick={() => onChannelSelect(channel)}>{channel.name}</button>
+          </li>
         ))}
       </ul>
     </div>
