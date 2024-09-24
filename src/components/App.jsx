@@ -5,6 +5,7 @@ function App() {
   const [isConnected, setIsConnected] = useState(socket.connected)
   const [nickName, setNickName] = useState('')
   const [hasNickname, setHasNickname] = useState(false)
+  const [channels, setChannels] = useState([])
 
   useEffect(() => {
     socket.connect()
@@ -12,9 +13,14 @@ function App() {
     socket.on('connect', () => setIsConnected(true))
     socket.on('disconnect', () => setIsConnected(false))
 
+    socket.on('channels', receivedChannels => {
+      setChannels(receivedChannels)
+    })
+
     return () => {
       socket.off('connect')
       socket.off('disconnect')
+      socket.off('channels')
     }
   }, [])
 
@@ -42,6 +48,7 @@ function App() {
         <div>
           <p>Connected: {isConnected ? 'Yes' : 'No'}</p>
           <p>User: {nickName}</p>
+          {console.log(channels)}
         </div>
       )}
     </div>
