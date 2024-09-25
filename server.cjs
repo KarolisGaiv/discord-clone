@@ -68,11 +68,20 @@ io.on('connection', socket => {
 
   if (!userSession) {
     // Announce when user joins the server for the first time
-    socket.in(WELCOME_CHANNEL).emit('user:join', {
-      userId: currentSession.userId,
-      username: currentSession.username,
-      connected: true,
-    })
+    const welcomeMessage = {
+      id: generateRandomId(),
+      userId: 'server',
+      username: 'Server',
+      message: `${currentSession.username} has joined the server!`,
+      timestamp: Date.now(),
+    }
+    const welcomeChannel = channels.find(channel => channel.name === WELCOME_CHANNEL)
+    if (welcomeChannel) {
+      welcomeChannel.messages.push(welcomeMessage)
+    }
+
+    // Emit the join message to all users in the welcome channel
+    io.to(WELCOME_CHANNEL).emit('message:channel', WELCOME_CHANNEL, welcomeMessage)
   }
 
   socket.emit('channels', channels)
