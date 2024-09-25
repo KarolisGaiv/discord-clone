@@ -14,10 +14,14 @@ export default function ChatWindow({ channel, messages }) {
   }
 
   return (
-    <div>
-      <h2>Channel: {channel.name}</h2>
+    <main className="chat-wrapper">
+      <section className="channel-name-container">
+        <h3>
+          # <span>{channel.name}</span>
+        </h3>
+      </section>
 
-      <div>
+      <div className="message-list">
         {messages.map(message => (
           <div key={message.id}>
             <Avatar name={message.username} size={20} variant="beam" />
@@ -41,6 +45,6 @@ export default function ChatWindow({ channel, messages }) {
         />
         <button type="submit">Send</button>
       </form>
-    </div>
+    </main>
   )
 }
