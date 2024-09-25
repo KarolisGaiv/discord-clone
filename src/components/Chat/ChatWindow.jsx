@@ -2,6 +2,7 @@ import { socket } from '@/libs/socket'
 import { useState } from 'react'
 import Avatar from 'boring-avatars'
 import moment from 'moment'
+import './style.css'
 
 export default function ChatWindow({ channel, messages }) {
   const [newMessage, setNewMessage] = useState('')

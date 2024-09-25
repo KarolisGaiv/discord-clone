@@ -82,7 +82,7 @@ function App() {
               messages={channelMessages[selectedChannel.name] || []}
             />
           ) : (
-            <p>No channel selected</p>
+            <h1 className="default-message-view">No channel selected</h1>
           )}
         </main>
       )}
