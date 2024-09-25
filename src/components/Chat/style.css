@@ -83,18 +83,40 @@ h3 {
   display: flex;
   align-items: center;
   border: 1px solid #303339;
-}
 
-.text-field-wrapper input {
-  width: 100%;
-  padding: 0.5rem 0;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  color: #dcddde;
-  font-size: 1rem;
+  & input {
+    width: 100%;
+    padding: 0.5rem 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #dcddde;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+  }
+
+  & .icon {
+    font-size: 1.5em;
+  }
 }
 
 .text-field-wrapper input::placeholder {
   color: #72767d;
+}
+
+.right-side-icons-wrapper {
+  display: flex;
+  align-items: baseline;
+
+  & .icon-wrapper {
+    margin: 0 0.5rem;
+  }
+}
+
+.gif-icon-wrapper {
+  display: flex;
+  align-items: center;
+  background: #6d8080;
+  border-radius: 5px;
+  margin: 0 0.5rem;
 }
