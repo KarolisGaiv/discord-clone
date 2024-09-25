@@ -38,14 +38,13 @@ export default function ChatWindow({ channel, messages }) {
         ))}
       </div>
 
-      <form onSubmit={handleSendMessage}>
+      <form className="text-field-wrapper" onSubmit={handleSendMessage}>
         <input
           type="text"
           value={newMessage}
           onChange={e => setNewMessage(e.target.value)}
           placeholder={`Message #${channel.name}`}
         />
-        <button type="submit">Send</button>
       </form>
     </main>
   )
