@@ -1,16 +1,19 @@
+import './style.css'
+import Avatar from 'boring-avatars'
+
 function UsersList({ listOfUsers }) {
   return (
-    <div>
-      <h1>Available Users:</h1>
-      <ul>
+    <section className="server-users-wrapper">
+      <ul className="server-users-list">
         {listOfUsers.map(user => (
-          <li key={user.userId}>
-            <div>{user.username}</div>
-            <div>{user.connected ? 'Online' : 'Offline'}</div>
+          <li key={user.userId} className="user-container">
+            <Avatar name={user.username} size={30} variant="beam" className="avatar" />
+            <span className="user-name-container">{user.username}</span>
+            {/* <div>{user.connected ? 'Online' : 'Offline'}</div> */}
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   )
 }
 

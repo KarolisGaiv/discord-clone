@@ -2,7 +2,7 @@ import './style.css'
 
 function ChannelsList({ channels, onChannelSelect }) {
   return (
-    <nav className="channels-wrapper">
+    <section className="channels-wrapper">
       <ul className="channels-list">
         {channels.map((channel, index) => (
           <li key={index}>
@@ -13,7 +13,7 @@ function ChannelsList({ channels, onChannelSelect }) {
           </li>
         ))}
       </ul>
-    </nav>
+    </section>
   )
 }
 
