@@ -23,15 +23,17 @@ export default function ChatWindow({ channel, messages }) {
 
       <div className="message-list">
         {messages.map(message => (
-          <div key={message.id}>
-            <Avatar name={message.username} size={20} variant="beam" />
-            <div>
-              <p>
-                <strong>{message.username}</strong>
-              </p>
-              <span>{moment(message.timestamp).format('L, LT')}</span>
-            </div>
-            {message.message}
+          <div key={message.id} className="chat-message">
+            <Avatar name={message.username} size={30} variant="beam" className="avatar" />
+            <h4 className="message-container">
+              <div>
+                <span className="username-label">{message.username}</span>
+                <span className="timestamp-label">{moment(message.timestamp).calendar()}</span>
+              </div>
+              <div>
+                <span className="message-content-label">{message.message}</span>
+              </div>
+            </h4>
           </div>
         ))}
       </div>
