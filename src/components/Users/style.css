@@ -1,5 +1,5 @@
 .server-users-wrapper {
-  max-width: 200px;
+  width: 200px;
 }
 
 .server-users-list {
@@ -33,6 +33,28 @@
   white-space: nowrap;
 }
 
+.avatar-container {
+  position: relative;
+}
+
 .avatar {
   flex-shrink: 0;
+}
+
+.user-status {
+  position: absolute;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  bottom: 0;
+  right: 0;
+
+  &.online {
+    background: #1dda1d;
+  }
+
+  &.offline {
+    --offline-color: #424549;
+    background: var(--offline-color);
+  }
 }

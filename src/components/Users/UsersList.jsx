@@ -1,5 +1,6 @@
 import './style.css'
 import Avatar from 'boring-avatars'
+import classNames from 'classnames'
 
 function UsersList({ listOfUsers }) {
   return (
@@ -7,9 +8,16 @@ function UsersList({ listOfUsers }) {
       <ul className="server-users-list">
         {listOfUsers.map(user => (
           <li key={user.userId} className="user-container">
-            <Avatar name={user.username} size={30} variant="beam" className="avatar" />
+            <div className="avatar-container">
+              <Avatar name={user.username} size={30} variant="beam" className="avatar" />
+              <span
+                className={classNames('user-status', {
+                  online: user.connected,
+                  offline: !user.connected,
+                })}
+              ></span>
+            </div>
             <span className="user-name-container">{user.username}</span>
-            {/* <div>{user.connected ? 'Online' : 'Offline'}</div> */}
           </li>
         ))}
       </ul>
