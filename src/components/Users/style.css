@@ -48,7 +48,7 @@
   height: 10px;
   width: 10px;
   bottom: 0;
-  right: 0;
+  right: 15px;
 
   &.online {
     background: #1dda1d;
