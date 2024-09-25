@@ -31,7 +31,7 @@ export default function ChatWindow({ channel, messages }) {
                 <span className="timestamp-label">{moment(message.timestamp).calendar()}</span>
               </div>
               <div>
-                <span className="message-content-label">{message.message}</span>
+                <span className="message-content">{message.message}</span>
               </div>
             </h4>
           </div>
