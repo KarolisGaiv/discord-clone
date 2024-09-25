@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { socket } from '@/libs/socket'
-import ChannelsList from './ChannelsList'
-import UsersList from './UsersList'
-import ChatWindow from './ChatWindow'
+import ChannelsList from '@/components/Channels/ChannelsList'
+import UsersList from '@/components/Users/UsersList'
+import ChatWindow from '@/components/Chat/ChatWindow'
+import '@/index.css'
 
 function App() {
   const [isConnected, setIsConnected] = useState(socket.connected)
@@ -72,7 +73,7 @@ function App() {
           <button type="submit">Submit</button>
         </form>
       ) : (
-        <div>
+        <main className="main-container">
           <ChannelsList channels={channels} onChannelSelect={handleChannelSelect} />
           <UsersList listOfUsers={users} />
           {selectedChannel ? (
@@ -83,7 +84,7 @@ function App() {
           ) : (
             <p>No channel selected</p>
           )}
-        </div>
+        </main>
       )}
     </div>
   )

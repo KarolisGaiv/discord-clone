@@ -1,0 +1,64 @@
+.channels-wrapper {
+  --background-main: #1e2124;
+  --background-light-blue: #7289da;
+  --background-light-grey: #313338;
+
+  background: var(--background-main);
+}
+
+.channels-list {
+  list-style: none;
+  padding: 0 1rem;
+  margin: 0.5rem 0;
+
+  & li {
+    margin-bottom: 10px;
+    position: relative;
+  }
+}
+
+.channel-button {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--background-light-grey);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition:
+    width 0.3s ease,
+    height 0.3s ease,
+    border-radius 0.3s ease;
+  padding: 0;
+
+  &:hover {
+    border-radius: 10px;
+    background-color: var(--background-light-blue);
+  }
+}
+
+.channel-name-label {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  background-color: var(--background-main);
+  font-weight: 700;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-left: 1.2rem;
+  white-space: nowrap;
+  z-index: 3;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.channels-list li:hover .channel-name-label {
+  opacity: 1;
+  visibility: visible;
+}
