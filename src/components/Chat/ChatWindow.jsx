@@ -8,8 +8,6 @@ import { GoGift } from 'react-icons/go'
 import { PiGif } from 'react-icons/pi'
 import { TbFileSmile } from 'react-icons/tb'
 import { FaRegFaceSmile } from 'react-icons/fa6'
-import { FaIcons } from 'react-icons/fa'
-// import { FaIcons } from "react-icons/fa6";
 
 export default function ChatWindow({ channel, messages }) {
   const [newMessage, setNewMessage] = useState('')
