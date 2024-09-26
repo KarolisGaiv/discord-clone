@@ -7,13 +7,14 @@ import '@/index.css'
 
 function App() {
   const [nickName, setNickName] = useState('')
+  const [hasNickname, setHasNickname] = useState(false)
   const [channels, setChannels] = useState([])
   const [users, setUsers] = useState([])
   const [selectedChannel, setSelectedChannel] = useState(null)
   const [channelMessages, setChannelMessages] = useState({})
 
   useEffect(() => {
-    if (nickName) {
+    if (hasNickname) {
       socket.auth = { username: nickName }
       socket.connect()
     }
@@ -48,11 +49,12 @@ function App() {
       socket.off('users')
       socket.off('message:channel')
     }
-  }, [nickName])
+  }, [hasNickname, nickName])
 
   function handleNicknameSubmit(event) {
     event.preventDefault()
     socket.emit('user:join', { username: nickName })
+    setHasNickname(true)
   }
 
   function handleChannelSelect(channel) {
@@ -61,7 +63,7 @@ function App() {
 
   return (
     <main className="app-container">
-      {!nickName ? (
+      {!hasNickname ? (
         <div className="entry-form-wrapper">
           <form onSubmit={handleNicknameSubmit}>
             <label htmlFor="nickName">Enter your nickname:</label>
