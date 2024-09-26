@@ -39,6 +39,13 @@ function App() {
       }))
     })
 
+    // update user status when user disconnects
+    socket.on('user:disconnect', ({ userId }) => {
+      setUsers(prevUsers =>
+        prevUsers.map(user => (user.userId === userId ? { ...user, connected: false } : user)),
+      )
+    })
+
     return () => {
       socket.off('connect')
       socket.off('disconnect')
