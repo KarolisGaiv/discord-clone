@@ -66,21 +66,23 @@ function App() {
   }
 
   return (
-    <div>
+    <main className="app-container">
       {!hasNickname ? (
-        <form onSubmit={handleNicknameSubmit}>
-          <label htmlFor="nickName">Enter your nickname:</label>
-          <input
-            id="nickName"
-            type="text"
-            value={nickName}
-            onChange={e => setNickName(e.target.value)}
-            required
-          />
-          <button type="submit">Submit</button>
-        </form>
+        <div className="entry-form-wrapper">
+          <form onSubmit={handleNicknameSubmit}>
+            <label htmlFor="nickName">Enter your nickname:</label>
+            <input
+              id="nickName"
+              type="text"
+              value={nickName}
+              onChange={e => setNickName(e.target.value)}
+              required
+            />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       ) : (
-        <main className="main-container">
+        <section className="main-container">
           <ChannelsList channels={channels} onChannelSelect={handleChannelSelect} />
           <UsersList listOfUsers={users} />
           {selectedChannel ? (
@@ -91,9 +93,9 @@ function App() {
           ) : (
             <h1 className="default-message-view">No channel selected</h1>
           )}
-        </main>
+        </section>
       )}
-    </div>
+    </main>
   )
 }
 
