@@ -85,7 +85,9 @@ io.on('connection', socket => {
   }
 
   socket.emit('channels', channels)
-  socket.emit('users', sessions.getAllUsers())
+
+  // update list of connected users to all connected sockets
+  io.emit('users', sessions.getAllUsers())
 
   socket.on('user:leave', () => {
     socket.in(WELCOME_CHANNEL).emit('user:leave', {
