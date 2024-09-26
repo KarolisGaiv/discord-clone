@@ -19,7 +19,7 @@ export default function ChatWindow({ channel, messages }) {
   }
 
   return (
-    <main className="chat-wrapper">
+    <section className="chat-wrapper">
       <section className="channel-name-container">
         <h3>
           # <span>{channel.name}</span>
@@ -50,6 +50,7 @@ export default function ChatWindow({ channel, messages }) {
           value={newMessage}
           onChange={e => setNewMessage(e.target.value)}
           placeholder={`Message #${channel.name}`}
+          aria-label={`Message input for #${channel.name}`}
         />
         <div className="right-side-icons-wrapper">
           <div className="icon-wrapper">
@@ -69,6 +70,6 @@ export default function ChatWindow({ channel, messages }) {
           </div>
         </div>
       </form>
-    </main>
+    </section>
   )
 }
