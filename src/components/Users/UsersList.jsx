@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 function UsersList({ listOfUsers }) {
   return (
-    <section className="server-users-wrapper">
+    <aside className="server-users-wrapper">
       <ul className="server-users-list">
         {listOfUsers.map(user => (
           <li key={user.userId} className="user-container">
@@ -21,7 +21,7 @@ function UsersList({ listOfUsers }) {
           </li>
         ))}
       </ul>
-    </section>
+    </aside>
   )
 }
 
