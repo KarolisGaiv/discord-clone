@@ -6,7 +6,6 @@ import ChatWindow from '@/components/Chat/ChatWindow'
 import '@/index.css'
 
 function App() {
-  const [isConnected, setIsConnected] = useState(socket.connected)
   const [nickName, setNickName] = useState('')
   const [hasNickname, setHasNickname] = useState(false)
   const [channels, setChannels] = useState([])
@@ -19,9 +18,6 @@ function App() {
       socket.auth = { username: nickName }
       socket.connect()
     }
-
-    socket.on('connect', () => setIsConnected(true))
-    socket.on('disconnect', () => setIsConnected(false))
 
     socket.on('channels', receivedChannels => {
       setChannels(receivedChannels)
